@@ -1,0 +1,42 @@
+{
+  "name": "ghost-trap",
+  "version": "0.0.0",
+  "description": "Static site generator for the Ghost blogging platform.",
+  "homepage": "http://github.com/craigruks/ghost-trap",
+  "repository": "http://github.com/craigruks/ghost-trap",
+  "author": {
+    "name": "Craig Ruks",
+    "email": "craig@craigruks.com",
+    "url": "http://craigruks.com"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    "ghost",
+    "blog",
+    "static",
+    "site",
+    "generator",
+    "trap"
+  ],
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "gulp": "^3.6.0",
+    "gulp-coveralls": "^0.1.0",
+    "gulp-eslint": "^0.15.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nsp": "^0.4.5",
+    "gulp-plumber": "^1.0.0",
+    "sinon": "^1.16.1"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT",
+  "dependencies": {}
+}
