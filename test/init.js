@@ -1,7 +1,6 @@
 'use strict';
 
 var chai = require('chai');
-var expect = chai.expect;
 chai.should();
 
 
@@ -17,12 +16,6 @@ describe('ghostTrap object', function () {
     var ghostTrap = require('../');
 
     ghostTrap.trap.should.be.a('function');
-  });
-
-  it('should return boolean', function () {
-    var ghostTrap = require('../');
-
-    expect(ghostTrap.trap()).to.equal(true);
   });
 
 });
