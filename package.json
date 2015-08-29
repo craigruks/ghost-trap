@@ -24,8 +24,6 @@
   "devDependencies": {
     "chai": "^3.2.0",
     "chai-as-promised": "^5.1.0",
-    "connect": "^3.4.0",
-    "finalhandler": "^0.4.0",
     "gulp": "^3.6.0",
     "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^0.15.0",
@@ -34,10 +32,9 @@
     "gulp-mocha": "^2.0.0",
     "gulp-nsp": "^0.4.5",
     "gulp-plumber": "^1.0.0",
+    "request": "^2.61.0",
     "rimraf": "^2.4.3",
-    "serve-static": "^1.10.0",
-    "sinon": "^1.16.1",
-    "static-server": "^2.0.0"
+    "sinon": "^1.16.1"
   },
   "scripts": {
     "prepublish": "gulp prepublish",
@@ -46,9 +43,11 @@
   "license": "MIT",
   "dependencies": {
     "cli-spinner": "^0.2.1",
+    "finalhandler": "^0.4.0",
     "node-fs": "^0.1.7",
     "path": "^0.11.14",
     "replace": "^0.3.0",
+    "serve-static": "^1.10.0",
     "simplecrawler": "^0.5.2",
     "sprintf": "^0.1.5",
     "url": "^0.10.3"

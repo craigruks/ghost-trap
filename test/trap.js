@@ -18,7 +18,7 @@ describe('ghostTrap.trap function', function () {
   it('should error on malformed domain param', function () {
     var isNumber = 25;
 
-    ghostTrap.trap(isNumber, 1, '../tmp', 'mydomain.com', function (err) {
+    ghostTrap.trap(isNumber, 1, '/tmp', 'mydomain.com', function (err) {
       expect(err).to.be.an.instanceof(TypeError);
     });
   });
@@ -34,13 +34,13 @@ describe('ghostTrap.trap function', function () {
   it('should error on malformed staticWebAddress param', function () {
     var isNumber = 25;
 
-    ghostTrap.trap('localhost', 1, '../tmp', isNumber, function (err) {
+    ghostTrap.trap('localhost', 1, '/tmp', isNumber, function (err) {
       expect(err).to.be.an.instanceof(TypeError);
     });
   });
 
   it('should error when ghost instance is unreachable', function (done) {
-    ghostTrap.trap('foobarbaz', 1, '../tmp', 'mydomain.com', function (err) {
+    ghostTrap.trap('foobarbaz', 1, '/tmp', 'mydomain.com', function (err) {
       expect(err).to.be.an.instanceof(Error);
       done();
     });
@@ -50,7 +50,7 @@ describe('ghostTrap.trap function', function () {
     // make sure to give enough time to crawl example site
     this.timeout(15000);
 
-    var directory = path.join(__dirname, '../test-default_ghost_static_site');
+    var directory = path.join(process.cwd(), './test-default_ghost_static_site');
     var serve = serveStatic(directory);
 
     var server = http.createServer(function (req, res) {
@@ -60,12 +60,12 @@ describe('ghostTrap.trap function', function () {
 
     server.listen(2368);
 
-    ghostTrap.trap('localhost', 2368, '../tmp', 'mydomain.com',
+    ghostTrap.trap('localhost', 2368, './tmp', 'mydomain.com',
       // when complete make sure the message returned is 'success'
       function (success) {
         expect(success).to.equal('success');
 
-        rimraf(path.join(__dirname, '../tmp'), function () {
+        rimraf(path.join(process.cwd(), './tmp'), function () {
           server.close();
           done();
         });
