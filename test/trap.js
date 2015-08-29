@@ -1,50 +1,55 @@
 'use strict';
 
 var chai = require('chai');
-var expect = chai.expect;
+var chaiAsPromised = require('chai-as-promised');
 var ghostTrap = require('../');
+var expect = chai.expect;
+
 chai.should();
+chai.use(chaiAsPromised);
 
 
 describe('ghostTrap.trap function', function () {
-  it('returns true when successful', function () {
-    expect(ghostTrap.trap('localhost', undefined, 'build', 'mydomain.com')).to.equal(true);
-  });
 
   it('should error on malformed domain param', function () {
     var isNumber = 25;
 
-    expect(function () {
-      ghostTrap.trap(isNumber, undefined, 'build', 'mydomain.com');
-    }).to.throw(TypeError);
+    ghostTrap.trap(isNumber, 1, 'build', 'mydomain.com', function (err) {
+      expect(err).to.be.an.instanceof(TypeError);
+    });
   });
 
   it('should error on malformed staticDirectory param', function () {
     var isNumber = 25;
 
-    expect(function () {
-      ghostTrap.trap('localhost', undefined, isNumber, 'mydomain.com');
-    }).to.throw(TypeError);
+    ghostTrap.trap('localhost', 1, isNumber, 'mydomain.com', function (err) {
+      expect(err).to.be.an.instanceof(TypeError);
+    });
   });
 
   it('should error on malformed staticWebAddress param', function () {
     var isNumber = 25;
 
-    expect(function () {
-      ghostTrap.trap('localhost', undefined, 'build', isNumber);
-    }).to.throw(TypeError);
+    ghostTrap.trap('localhost', 1, 'build', isNumber, function (err) {
+      expect(err).to.be.an.instanceof(TypeError);
+    });
   });
 
-  // make sure the callback method gets run by returning a number that increments up when run in callback method
-  it('should run callback param method', function () {
-    var called = 0;
-    var callback = function () {
-      called++;
-    };
+  it('should error when ghost instance is unreachable', function (done) {
+    ghostTrap.trap('foobarbaz', 1, 'build', 'mydomain.com', function (err) {
+      expect(err).to.be.an.instanceof(Error);
+      done();
+    });
+  });
 
-    ghostTrap.trap('localhost', undefined, 'build', 'mydomain.com', callback);
+  it('should resolve with success', function (done) {
+    // make sure to give enough time to crawl example site
+    this.timeout(30000);
 
-    expect(called).to.equal(1);
+    ghostTrap.trap('localhost', 2368, 'build', 'mydomain.com', function (success) {
+      expect(success).to.equal('success');
+      done();
+    });
   });
 
 
