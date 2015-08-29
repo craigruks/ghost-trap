@@ -43,9 +43,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "es6-promise": "^3.0.2",
-    "http": "0.0.0",
+    "node-fs": "^0.1.7",
+    "path": "^0.11.14",
+    "replace": "^0.3.0",
     "simplecrawler": "^0.5.2",
-    "sprintf": "^0.1.5"
+    "sprintf": "^0.1.5",
+    "url": "^0.10.3"
   }
 }
