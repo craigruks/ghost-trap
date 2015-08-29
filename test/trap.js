@@ -6,13 +6,15 @@ var ghostTrap = require('../');
 var expect = chai.expect;
 var path = require('path');
 var rimraf = require('rimraf');
+var http = require('http');
+var finalhandler = require('finalhandler');
+var serveStatic = require('serve-static');
 
 chai.should();
 chai.use(chaiAsPromised);
 
 
 describe('ghostTrap.trap function', function () {
-
   it('should error on malformed domain param', function () {
     var isNumber = 25;
 
@@ -46,7 +48,17 @@ describe('ghostTrap.trap function', function () {
 
   it('should make directories and then callback success', function (done) {
     // make sure to give enough time to crawl example site
-    this.timeout(30000);
+    this.timeout(15000);
+
+    var directory = path.join(__dirname, '../test-default_ghost_static_site');
+    var serve = serveStatic(directory);
+
+    var server = http.createServer(function (req, res) {
+      var handlerDone = finalhandler(req, res);
+      serve(req, res, handlerDone);
+    });
+
+    server.listen(2368);
 
     ghostTrap.trap('localhost', 2368, '../tmp', 'mydomain.com',
       // when complete make sure the message returned is 'success'
@@ -54,6 +66,7 @@ describe('ghostTrap.trap function', function () {
         expect(success).to.equal('success');
 
         rimraf(path.join(__dirname, '../tmp'), function () {
+          server.close();
           done();
         });
 
