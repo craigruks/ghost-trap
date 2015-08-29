@@ -1,5 +1,9 @@
+# debugging log
 npm-debug.log
 
+# dependency libraries
 node_modules
 coverage
-build
+
+# where tests write the static site
+tmp
