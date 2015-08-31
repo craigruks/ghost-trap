@@ -73,5 +73,5 @@ MIT © [Craig Ruks](craigruks.com)
 [travis-url]: https://travis-ci.org/craigruks/ghost-trap
 [daviddm-image]: https://david-dm.org/craigruks/ghost-trap.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/craigruks/ghost-trap
-[coveralls-image]: https://coveralls.io/repos/craigruks/ghost-trap/badge.svg
+[coveralls-image]: https://coveralls.io/repos/craigruks/ghost-trap/badge.svg?branch=master&service=github
 [coveralls-url]: https://coveralls.io/r/craigruks/ghost-trap
