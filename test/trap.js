@@ -48,7 +48,7 @@ describe('ghostTrap.trap function', function () {
 
   it('should make directories and then callback success', function (done) {
     // make sure to give enough time to crawl example site
-    this.timeout(15000);
+    this.timeout(30000);
 
     var directory = path.join(process.cwd(), './test-default_ghost_static_site');
     var serve = serveStatic(directory);
@@ -60,12 +60,12 @@ describe('ghostTrap.trap function', function () {
 
     server.listen(2368);
 
-    ghostTrap.trap('localhost', 2368, './tmp', 'mydomain.com',
+    ghostTrap.trap('localhost', 2368, '/tmp/ghost-trap-example', 'mydomain.com',
       // when complete make sure the message returned is 'success'
       function (success) {
         expect(success).to.equal('success');
 
-        rimraf(path.join(process.cwd(), './tmp'), function () {
+        rimraf('/tmp/ghost-trap-example', function () {
           server.close();
           done();
         });
