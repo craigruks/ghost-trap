@@ -59,7 +59,7 @@ I love using the Ghost blogging engine. Ideally I wanted to run Ghost locally an
 
 ## Contributors
 
-Feel free to add issues, send pull requests, the works.
+Please contribute. Add issues, send pull requests, the works.
 
 
 ## License
