@@ -1,6 +1,6 @@
 {
   "name": "ghost-trap",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Static site generator for the Ghost blogging platform.",
   "homepage": "http://github.com/craigruks/ghost-trap",
   "repository": "http://github.com/craigruks/ghost-trap",

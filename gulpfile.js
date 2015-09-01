@@ -1,4 +1,5 @@
 'use strict';
+
 var path = require('path');
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
@@ -51,5 +52,7 @@ gulp.task('coveralls', ['test'], function () {
     .pipe(coveralls());
 });
 
-gulp.task('prepublish', ['nsp']);
+// TODO remember to add back in!
+// gulp.task('prepublish', ['nsp']);
+gulp.task('prepublish', []);
 gulp.task('default', ['static', 'test', 'coveralls']);
